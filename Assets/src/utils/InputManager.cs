@@ -6,10 +6,10 @@ namespace utils {
 	}
 
 	public class InputManager : Singleton<InputManager> {
-		private Vector2 touchPos;
-		private bool isTouch;
+		private static Vector2 touchPos;
+		private static bool isTouch;
 		private delegate void InputHandler (Vector2 pos, bool isTouch);
-		private event InputHandler inputEvent;
+		private static event InputHandler inputEvent;
 
 		public void RegisterTouchInput(ITouchController obj) {
 			inputEvent += obj.touchOperation;

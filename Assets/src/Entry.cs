@@ -5,19 +5,22 @@ using UnityEngine.UI;
 using utils;
 
 public class Entry : MonoBehaviour {
-	private Text debugLog;
+	// private Text debugLog;
 	private Vector2 pos;
 
 	// Use this for initialization
 	void Start() {
-		debugLog = gameObject.GetComponentInChildren<Text>();
-		Debug.Log(Camera.main.rect);
+		// debugLog = gameObject.GetComponentInChildren<Text>();
+		// Debug.Log(Camera.main.rect);
+		DebugHelper.init();
+		// InputManager
 	}
 
 	// Update is called once per frame
 	void Update() {
 		pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		ShowPosOnScreen(pos);
+		// ShowPosOnScreen(pos);
+		DebugHelper.Instance.ShowPosOnScreen(pos);
 	}
 
 }
