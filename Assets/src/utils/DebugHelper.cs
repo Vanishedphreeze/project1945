@@ -6,8 +6,8 @@ namespace utils {
 		private static GameObject goDebugLog;
 		private static Text debugLog;
 
-		DebugHelper() {
-			Singleton.init();
+		public DebugHelper() {
+			Singleton<DebugHelper>.init();
 			debugLog = goDebugLog.GetComponentInChildren<Text>();
 		}
 
