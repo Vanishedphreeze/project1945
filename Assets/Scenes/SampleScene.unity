@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249594119}
   - component: {fileID: 249594118}
+  - component: {fileID: 249594120}
   m_Layer: 0
   m_Name: whitesquare
   m_TagString: Untagged
@@ -188,6 +189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249594120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249594117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af958af83d9158748969964b4d1c3a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +409,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 940726502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4250458a1aa82a742bcc794746f15471, type: 3}
+  m_Script: {fileID: 11500000, guid: 41974994d57819444a5a4b88aec642e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1182316013

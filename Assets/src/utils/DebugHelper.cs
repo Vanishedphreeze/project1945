@@ -1,14 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// should provide a debug map
+
 namespace utils {
 	class DebugHelper : Singleton<DebugHelper> {
-		private static GameObject goDebugLog;
+		private static GameObject goAnchor;
 		private static Text debugLog;
 
 		public DebugHelper() {
+			// do nothing
+		}
+
+		public static void init(GameObject goAnchor) {
 			Singleton<DebugHelper>.init();
-			debugLog = goDebugLog.GetComponentInChildren<Text>();
+			DebugHelper.goAnchor = goAnchor;
+			debugLog = goAnchor.GetComponentInChildren<Text>();
 		}
 
 		public void ShowPosOnScreen(Vector3 pos) {
@@ -17,6 +24,10 @@ namespace utils {
 
 		public void ShowLogOnScreen(string log) {
 			debugLog.text = log;
+		}
+
+		public void PrintLog(object log) {
+			Debug.Log(log);
 		}
 	}
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace utils {
 	public interface ITouchController {
-		void touchOperation(Vector2 pos, bool isTouch);
+		void OnTouchInput(Vector2 pos, bool isTouch);
 	}
 
 	public class InputManager : Singleton<InputManager> {
@@ -11,12 +11,30 @@ namespace utils {
 		private delegate void InputHandler (Vector2 pos, bool isTouch);
 		private static event InputHandler inputEvent;
 
-		public void RegisterTouchInput(ITouchController obj) {
-			inputEvent += obj.touchOperation;
+		public InputManager() {
+			// do nothing
 		}
+
+		public static void init(GameObject goAnchor) {
+			Singleton<InputManager>.init();
+		}
+
+		public void RegisterTouchEvent(ITouchController obj) {
+			inputEvent += obj.OnTouchInput;
+		}
+
+		public void UnregisterTouchEvent(ITouchController obj) {
+			inputEvent -= obj.OnTouchInput;
+		}
+
+		// public void ClearAllTouchEvent() {
+
+		// }
 
 		public void Update() {
 			touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			isTouch = Input.anyKey;
+			inputEvent(touchPos, isTouch);
 		}
 	}
 }
