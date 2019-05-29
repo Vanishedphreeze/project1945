@@ -24,6 +24,7 @@ public class Entry : MonoBehaviour, ITouchController {
 
 	// Use this for initialization
 	void Awake() {
+		InitRandomGenerator();
 		DebugHelper.init(gameObject);
 		InputManager.init();
 
