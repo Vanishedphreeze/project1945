@@ -15,7 +15,7 @@ namespace utils {
 			// do nothing
 		}
 
-		public static void init(GameObject goAnchor) {
+		public new static void init() {
 			Singleton<InputManager>.init();
 		}
 

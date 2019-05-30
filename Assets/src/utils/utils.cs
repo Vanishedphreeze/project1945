@@ -1,22 +1,27 @@
 using System;
 
 namespace utils {
-	private Random globalRandomGenerator;
+	public static class Global {
+		static private Random globalRandomGenerator;
 
-	public void InitRandomGenerator(int seed = System.DateTime.Now.Millisecond) {
-		globalRandomGenerator = new Random(seed);
+		static public void InitRandomGenerator() {
+			globalRandomGenerator = new Random(System.DateTime.Now.Millisecond);
+		}
+
+		static public void InitRandomGenerator(int seed) {
+			globalRandomGenerator = new Random(seed);
+		}
+
+		static public int GetRandomInt() {
+			return globalRandomGenerator.Next();
+		}
+
+		static public int GetRandom(int n) {
+			return globalRandomGenerator.Next(n);
+		}
+
+		static public int GetRandomInRange(int m, int n) {
+			return globalRandomGenerator.Next(m, n);
+		}
 	}
-
-	public int GetRandomInt() {
-		return globalRandomGenerator.Next();
-	};
-
-	public int GetRandom(int n) {
-		return globalRandomGenerator.Next(n);
-	};
-
-	public int GetRandomInRange(int m, int n) {
-		return globalRandomGenerator.Next(m, n);
-	};
-
 }

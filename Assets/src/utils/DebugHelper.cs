@@ -15,7 +15,7 @@ namespace utils {
 		public static void init(GameObject goAnchor) {
 			Singleton<DebugHelper>.init();
 			DebugHelper.goAnchor = goAnchor;
-			debugLog = goAnchor.GetComponentInChildren<Text>();
+			debugLog = DebugHelper.goAnchor.GetComponentInChildren<Text>();
 		}
 
 		public void ShowPosOnScreen(Vector3 pos) {

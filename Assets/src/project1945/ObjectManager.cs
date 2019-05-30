@@ -1,21 +1,19 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using utils;
 
 namespace project1945 {
 	public class ObjectManager : Singleton<ObjectManager> {
-		struct strObj {
+		class strObj {
 			public int mark;
-			public Vector3 position;
 			public GameObject gameObj;
 			public Action updateFunc;
 
-			public strObj(int mark) {
-				mark = mark;
-				// instantiate 
-				updateFunc = () => { 
-					// setting local position instead of global position
-					gameObj.transform.localPosition = position;
-				};
+			public strObj(int mark, GameObject gameObj) {
+				this.mark = mark;
+				this.gameObj = gameObj;
+				updateFunc = null;
 			}
 		}
 
@@ -26,19 +24,25 @@ namespace project1945 {
 			// do nothing
 		}
 
-		public static void init() {
+		public new static void init() {
 			Singleton<ObjectManager>.init();
-			// prefab = (GameObject)Resources.Load("Prefabs/HP_Bar");
+			prefab = (GameObject)Resources.Load("Prefabs/BaseObject");
 		}
 
 		public int Create() {
-			int mark = GetRandomInt();
-			strObj obj = new strObj(mark);
-			// change this while using object pool.
-			// obj.gameObj = Instantiate(prefab, pos, rotation);
-
-			// attention : whether add option is copying structure
+			int mark = Global.GetRandomInt();
+			strObj obj = new strObj(mark, UnityEngine.Object.Instantiate(prefab));
 			objMap.Add(mark, obj);
+			return mark;
+		}
+
+		public void Destroy(int mark) {
+			UnityEngine.Object.Destroy(objMap[mark].gameObj);
+			objMap.Remove(mark);
+		}
+
+		public GameObject GetGameObject(int mark) {
+			return objMap[mark].gameObj;
 		}
 
 		public void SetUpdateFunc(int mark, Action func) {
